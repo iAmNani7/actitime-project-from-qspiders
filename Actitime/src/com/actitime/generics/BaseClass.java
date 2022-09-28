@@ -31,7 +31,7 @@ public class BaseClass
 	@AfterClass
 	public void closeBrowser()
 	{
-		driver.quit();
+		driver.close();
 	}
 	@BeforeMethod
 	public void login() throws IOException 
