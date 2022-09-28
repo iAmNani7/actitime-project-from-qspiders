@@ -22,7 +22,13 @@ public class TasklistPage extends BaseClass {
 	private WebElement ourcustomer;
 	@FindBy(xpath="//div[text()='Create Customer']")
 	private WebElement createcustbtn;
+	@FindBy(xpath="//div[@class='titleEditButtonContainer']/div[1]")
+	private WebElement createcustomermsgdiv;
 	
+	public WebElement getCreatecustomermsgdiv() {
+		return createcustomermsgdiv;
+	}
+
 	public TasklistPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);

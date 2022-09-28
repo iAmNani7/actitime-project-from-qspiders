@@ -24,20 +24,18 @@ public class CustomerModule extends BaseClass
 	{
 		EnterTimeTrack e=new EnterTimeTrack(driver);
 		e.setTaskButton();
-		
+
 		TasklistPage t=new TasklistPage(driver);
 		t.getAddnewbtn().click();
 		t.getNewcustomerlistbtn().click();
 		FileLib f=new FileLib(); 
-		t.getCustomernametxbox().sendKeys(f.getExcelValue("createcustomermodule", 1, 2));
+		String name=f.getExcelValue("createcustomermodule", 1, 2);
+		t.getCustomernametxbox().sendKeys(name);
 		t.getCusdescbox().sendKeys(f.getExcelValue("createcustomermodule", 1, 3));
 		t.getDropdownlistbtn().click();
-		Robot r=new Robot();
-		r.keyPress(KeyEvent.VK_O);
 		t.getOurcustomer().click();
 		t.getCreatecustbtn().click();
-		Thread.sleep(5000);
-		//Assert.assertEquals("HDFC_001", )
-		
+		Thread.sleep(3000);
+		Assert.assertEquals(t.getCreatecustomermsgdiv().getText(), name);
 	}
 }
