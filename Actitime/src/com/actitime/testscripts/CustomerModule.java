@@ -24,7 +24,6 @@ public class CustomerModule extends BaseClass
 	{
 		EnterTimeTrack e=new EnterTimeTrack(driver);
 		e.setTaskButton();
-
 		TasklistPage t=new TasklistPage(driver);
 		t.getAddnewbtn().click();
 		t.getNewcustomerlistbtn().click();
@@ -36,6 +35,14 @@ public class CustomerModule extends BaseClass
 		t.getOurcustomer().click();
 		t.getCreatecustbtn().click();
 		Thread.sleep(3000);
-		Assert.assertEquals(t.getCreatecustomermsgdiv().getText(), name);
+		if(t.getCreatecustomermsgdiv().getText().equals(name))
+		{
+			f.setExcelValue("createcustomermodule", 1, 4, "Pass");
+		}
+		else
+		{
+		 f.setExcelValue("createcustomermodule", 1, 4, "Fail");
+		 Assert.fail();
+		}
 	}
 }
